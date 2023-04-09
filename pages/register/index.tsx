@@ -22,7 +22,7 @@ const Register = () => {
             pw: ""
         });
         const axioscon = axios.create();
-        axioscon.post("../api/dbsrv", inputVal).then(
+        axioscon.post("../api/register", inputVal).then(
             (res) => {
                 console.log(res.data);
             },
@@ -33,7 +33,7 @@ const Register = () => {
 
     }
     const get = (): void  => {
-        axios.create().get("../api/dbsrv").then(
+        axios.create().get("../api/register").then(
             (res) => {
                 console.log(res.data);
             },
