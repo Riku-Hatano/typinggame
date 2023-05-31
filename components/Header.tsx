@@ -1,16 +1,25 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const Header = () => {
-    console.log("header is rendered!!");
     const [logUser, setLogUser] = useState(null);
+    const router = useRouter();
+    console.log(router.pathname);
+    
     useEffect(() => {
         if(sessionStorage.getItem("logUser") !== undefined && sessionStorage.getItem("logUser") !== null) {
             setLogUser(JSON.parse(sessionStorage.getItem("logUser") as string));
-            console.log(logUser);
-            console.log("header is rendered by fetching data form sessionstorage!!");
         }
     }, [])
+    useEffect(() => {
+        if(sessionStorage.getItem("logUser") !== undefined && sessionStorage.getItem("logUser") !== null) {
+            setLogUser(JSON.parse(sessionStorage.getItem("logUser") as string));
+        } else {
+            setLogUser(null);
+        }
+        console.log("pathname was changed")
+    }, [router.pathname])
     const logout = () => {
         sessionStorage.clear();
     }

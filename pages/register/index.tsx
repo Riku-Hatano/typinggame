@@ -42,6 +42,26 @@ const Register = () => {
             }
         )
     }
+    const testGet = (): void => {
+        axios.create().get("../api/test").then(
+            (res) => {
+                console.log(res);
+            },
+            (rej) => {
+                console.log(rej);
+            }
+        )
+    }
+    const testPost = (): void => {
+        axios.create().post("../api/test", {data: "dummy data"}).then(
+            (res) => {
+                console.log(res);
+            },
+            (rej) => {
+                console.log(rej);
+            }
+        )
+    }
 
     return (
         <>
@@ -52,6 +72,8 @@ const Register = () => {
                 <button type="submit">submit</button>
             </form>
             <button onClick={get}>show users</button>
+            <button onClick={testGet}>test get</button>
+            <button onClick={testPost}> test post</button>
         </>
     )
 }

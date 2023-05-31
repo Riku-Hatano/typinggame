@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { LogUser } from "../../typings/logUser";
 import { useRouter } from "next/router";
 
 const User = () => {
