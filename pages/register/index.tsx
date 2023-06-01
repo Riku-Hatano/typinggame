@@ -53,7 +53,8 @@ const Register = () => {
         )
     }
     const testPost = (): void => {
-        axios.create().post("../api/test", inputVal).then(
+        axios.create().post("https://typinggame-riku-hatano.vercel.app/api/test", inputVal).then(
+        // axios.create().post("../api/test", inputVal).then(
             (res) => {
                 console.log(res);
             },
