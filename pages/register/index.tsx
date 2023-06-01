@@ -43,7 +43,7 @@ const Register = () => {
         )
     }
     const testGet = (): void => {
-        axios.create().get("../api/test").then(
+        axios.create().get("https://typinggame-riku-hatano.vercel.app/pages/api/test").then(
             (res) => {
                 console.log(res);
             },
@@ -53,7 +53,7 @@ const Register = () => {
         )
     }
     const testPost = (): void => {
-        axios.create().post("../api/test", {data: "dummy data"}).then(
+        axios.create().post("../api/test", inputVal).then(
             (res) => {
                 console.log(res);
             },
