@@ -43,7 +43,7 @@ const Register = () => {
         )
     }
     const testGet = (): void => {
-        axios.create().get("https://typinggame-riku-hatano.vercel.app/pages/api/test").then(
+        axios.create().get("https://typinggame-riku-hatano.vercel.app/api/test").then(
             (res) => {
                 console.log(res);
             },
