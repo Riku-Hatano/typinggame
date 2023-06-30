@@ -34,6 +34,16 @@ const Login = () => {
             [e.target.name]: e.target.value
         })
     }
+    const getContentful = (): void => {
+        axios.create().get("./api/lib/contentful/getContentful").then(
+          (res) => {
+            console.log(res.data);
+          },
+          (rej) => {
+            console.log(rej);
+          }
+        )
+      }
     return (
         <>
             <h1>login</h1>
@@ -42,6 +52,7 @@ const Login = () => {
                 <input type="password" placeholder="pasword" name="pw" onChange={inputChange} value={inputVal.pw}/>
                 <button type="submit">login</button>
             </form>
+            <button onClick={getContentful}>get contentful from login page</button>
         </>
     )
 }
