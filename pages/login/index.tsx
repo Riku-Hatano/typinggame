@@ -4,24 +4,31 @@ import { SyntheticEvent } from "react";
 import { useRouter } from "next/router";
 
 const initialVal = {
-    name: "",
-    pw: "",
+    tittle: "",
+    slug: "",
+    content: ""
 }
 const Login = () => {
     const [inputVal, setInputVal] = useState(initialVal);
     const router = useRouter();
     const login = (e: SyntheticEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        axios.create().post("../api/login", inputVal).then(
+        axios.create().post("../api/lib/contentful/getContentful", inputVal).then(
+            // (res) => {
+            //     console.log(res.data);
+            //     if(res.data.message.length !== 0) {
+            //         console.log(res.data.message)
+            //         sessionStorage.setItem("logUser", JSON.stringify(res.data.message));
+            //         router.push("/user");
+            //     } else {
+            //         console.log("failed to login " + res.data.message);
+            //     }
+            // },
+            // (rej) => {
+            //     console.log(rej);
+            // }
             (res) => {
                 console.log(res.data);
-                if(res.data.message.length !== 0) {
-                    console.log(res.data.message)
-                    sessionStorage.setItem("logUser", JSON.stringify(res.data.message));
-                    router.push("/user");
-                } else {
-                    console.log("failed to login " + res.data.message);
-                }
             },
             (rej) => {
                 console.log(rej);
@@ -48,9 +55,10 @@ const Login = () => {
         <>
             <h1>login</h1>
             <form onSubmit={login}>
-                <input type="text" placeholder="user name" name="name" onChange={inputChange} value={inputVal.name}/>
-                <input type="password" placeholder="pasword" name="pw" onChange={inputChange} value={inputVal.pw}/>
-                <button type="submit">login</button>
+                <input type="text" placeholder="tittle" name="tittle" onChange={inputChange} value={inputVal.tittle}/>
+                <input type="text" placeholder="slug" name="slug" onChange={inputChange} value={inputVal.slug}/>
+                <input type="text" placeholder="content" name="content" onChange={inputChange} value={inputVal.content}/>
+                <button type="submit">submit</button>
             </form>
             <button onClick={getContentful}>get contentful from login page</button>
         </>
