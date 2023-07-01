@@ -4,8 +4,8 @@ const contentful = require('contentful-management')
 
 export default function getContentful(req, res) {
     const client = createClient({
-        space: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_ACCESS_KEY
+        space: "jivp4q6rn93f",
+        accessToken: "lX7fWPWoJdKgbnEgSCU2kSEGlEBT0H1PFqdWiuntS3s"
     })
 
     if(req.method === "GET") {
@@ -55,11 +55,12 @@ export default function getContentful(req, res) {
             accessToken: "CFPAT-1TieUWuOMg6lso2jVKRKaaTnBwxd6-yuVti2-iqRQho"
         });
 
-        managementClient.getSpace(process.env.CONTENTFUL_SPACE_ID)
+        managementClient.getSpace("jivp4q6rn93f")
             .then((space) => space.getEnvironment('master'))
             .then((environment) => environment.createEntry('rikuHatano', entry))
             .then((entry) => {
                 console.log('Entry created:', entry);
+                entry.publish();
                 res.status(200).json({ message: 'Entry created' });
             })
             .catch((error) => {
